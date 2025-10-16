@@ -7,7 +7,7 @@ from rest_framework.decorators import api_view
 
 # Create your views here.
 
-@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+@api_view(['GET', 'POST', 'PUT'])
 def studentView(request):
     if(request.method == 'GET'):
         # Get all the data from the Student table
@@ -35,15 +35,6 @@ def studentView(request):
             return Response(serializer.data, status=status.HTTP_200_OK)
         print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    if(request.method == 'DELETE'):
-        # Delete an existing entry in the Student table
-        id = request.data.get('id')
-        try:
-            student = Student.objects.get(id=id)
-        except Student.DoesNotExist:
-            return Response({'error': 'Student not found'}, status=status.HTTP_404_NOT_FOUND)
-        student.delete()
-        return Response({'message': 'Student deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
         
 
 @api_view(['GET', 'PUT', 'DELETE'])
