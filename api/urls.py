@@ -6,6 +6,7 @@ from api.views import student_class_base_view
 from api.views import employee_class_base_view
 from api.views import mixins_employee
 from api.views import mixins_student
+from api.views import generics_employee
 
 
 urlpatterns = [
@@ -26,4 +27,8 @@ urlpatterns = [
 
     path('mixins-students/', mixins_student.Students.as_view()), 
     path('mixins-student-detail/<int:pk>', mixins_student.StudentDetail.as_view()), 
+
+    path('generics-employees/', generics_employee.Employees.as_view()), 
+    path('generics-employee-detail/<int:pk>', generics_employee.EmployeeDetail.as_view()),
+
 ]
