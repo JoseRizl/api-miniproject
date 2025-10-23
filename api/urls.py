@@ -5,6 +5,8 @@ from api.views import employee_function_base_view
 from api.views import student_class_base_view
 from api.views import employee_class_base_view
 from api.views import mixins_employee
+from api.views import mixins_student
+
 
 urlpatterns = [
     path('fbv-students/', student_function_base_view.studentView),
@@ -19,6 +21,9 @@ urlpatterns = [
     path('cbv-employees/', employee_class_base_view.Employees.as_view()),
     path('cbv-employee/<int:pk>', employee_class_base_view.EmployeeDetail.as_view()),
 
-    path('mixins-employees/', mixins_employee.Employees.as_view()), #naka point Employees class
-    path('mixins-employee-detail/<int:pk>', mixins_employee.EmployeeDetail.as_view()), #naka point EmployeeDetail class
+    path('mixins-employees/', mixins_employee.Employees.as_view()), 
+    path('mixins-employee-detail/<int:pk>', mixins_employee.EmployeeDetail.as_view()), 
+
+    path('mixins-students/', mixins_student.Students.as_view()), 
+    path('mixins-student-detail/<int:pk>', mixins_student.StudentDetail.as_view()), 
 ]
