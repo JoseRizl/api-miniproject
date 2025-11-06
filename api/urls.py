@@ -10,6 +10,7 @@ from api.views import mixins_student
 from api.views import generics_employee
 import api.views.employee_viewsets as employee_viewsets_view
 import api.views.student_viewsets as student_viewsets_view
+from api.views import nested_serializer_view
 
 
 router = DefaultRouter()
@@ -41,5 +42,11 @@ urlpatterns = [
     path('generics-employee-detail/<int:pk>', generics_employee.EmployeeDetail.as_view()),
 
     path('', include(router.urls)),
+
+    path('blogs/', nested_serializer_view.BlogsView.as_view()),
+    path('comments/', nested_serializer_view.CommentsView.as_view()),
+
+    path('blogs/<int:pk>', nested_serializer_view.BlogDetailView.as_view()),
+    path('comments/<int:pk>', nested_serializer_view.CommentDetailView.as_view()),
 
 ]
